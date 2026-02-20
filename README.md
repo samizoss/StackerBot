@@ -1,4 +1,4 @@
-# SubNotion
+# StackerBot
 
 Automatically syncs your Substack newsletters to Notion. Pulls full article content (including paid posts), matches YouTube videos, fetches transcripts, and builds beautifully formatted Notion pages — all on autopilot.
 
@@ -72,8 +72,8 @@ Every Substack has an RSS feed at: `https://YOUR-SUBSTACK.substack.com/feed`
 
 ```bash
 # Clone and install
-git clone https://github.com/YOUR_USERNAME/SubNotion.git
-cd SubNotion
+git clone https://github.com/YOUR_USERNAME/StackerBot.git
+cd StackerBot
 pip install -r requirements.txt
 
 # Configure

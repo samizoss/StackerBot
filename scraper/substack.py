@@ -19,6 +19,39 @@ def fetch_rss_entries():
     return feed.entries
 
 
+def fetch_full_archive():
+    """Fetches ALL posts via Substack's archive API (not limited to 20 like RSS)."""
+    base_url = config.SUBSTACK_RSS_URL.replace("/feed", "")
+    log.info(f"Fetching full archive from {base_url}")
+
+    headers = config.BROWSER_HEADERS.copy()
+    if config.SUBSTACK_COOKIE:
+        headers["Cookie"] = config.SUBSTACK_COOKIE
+
+    all_posts = []
+    offset = 0
+    while offset < 10000:
+        r = requests.get(
+            f"{base_url}/api/v1/archive?sort=new&offset={offset}&limit=50",
+            headers=headers,
+            timeout=15,
+        )
+        if r.status_code != 200:
+            log.error(f"Archive API error: {r.status_code} at offset {offset}")
+            break
+        batch = r.json()
+        if not isinstance(batch, list) or not batch:
+            break
+        all_posts.extend(batch)
+        log.info(f"  Fetched {len(all_posts)} posts so far...")
+        if len(batch) < 50:
+            break
+        offset += 50
+
+    log.info(f"Full archive: {len(all_posts)} total posts.")
+    return all_posts
+
+
 def parse_substack_content(url):
     headers = config.BROWSER_HEADERS.copy()
     if config.SUBSTACK_COOKIE:

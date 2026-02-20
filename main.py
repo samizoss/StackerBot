@@ -23,9 +23,11 @@ def main():
         from tasks.fix_covers import run
     elif task == "repair-youtube":
         from tasks.repair_youtube import run
+    elif task == "backfill":
+        from tasks.backfill import run
     else:
         print(f"Unknown task: {task}")
-        print("Usage: python main.py [sync|fix-covers|repair-youtube]")
+        print("Usage: python main.py [sync|fix-covers|repair-youtube|backfill]")
         sys.exit(1)
 
     run()
