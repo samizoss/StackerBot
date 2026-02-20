@@ -1,6 +1,6 @@
-# Substack-to-Notion Scraper
+# SubNotion
 
-Automatically syncs a Substack newsletter to a Notion database. Finds matching YouTube videos and fetches transcripts. Deploys to Railway with cron scheduling.
+Automatically syncs your Substack newsletters to Notion. Pulls full article content (including paid posts), matches YouTube videos, fetches transcripts, and builds beautifully formatted Notion pages — all on autopilot.
 
 ## What It Does
 
@@ -72,8 +72,8 @@ Every Substack has an RSS feed at: `https://YOUR-SUBSTACK.substack.com/feed`
 
 ```bash
 # Clone and install
-git clone https://github.com/YOUR_USERNAME/substack-to-notion.git
-cd substack-to-notion
+git clone https://github.com/YOUR_USERNAME/SubNotion.git
+cd SubNotion
 pip install -r requirements.txt
 
 # Configure
