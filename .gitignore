@@ -1,0 +1,8 @@
+.env
+_env.txt
+__pycache__/
+*.pyc
+*.bat
+*.ps1
+data.csv
+imported_log.txt

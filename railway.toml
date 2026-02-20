@@ -1,0 +1,6 @@
+[build]
+builder = "RAILPACK"
+
+[deploy]
+startCommand = "python main.py sync"
+cronSchedule = "0 14,2 * * *"
