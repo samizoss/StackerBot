@@ -27,6 +27,7 @@ Automatically syncs a Substack newsletter to a Notion database. Finds matching Y
 | YouTube URL | URL |
 | Type | Select |
 | Content Status | Select |
+| Source | Select |
 
 4. Click **Share** on your database and add your integration
 
@@ -44,6 +45,7 @@ Automatically syncs a Substack newsletter to a Notion database. Finds matching Y
 | `NOTION_SECRET` | Yes | Your Notion integration token |
 | `DATABASE_ID` | Yes | Your Notion database ID |
 | `SUBSTACK_RSS_URL` | Yes | RSS feed URL (e.g. `https://natesnewsletter.substack.com/feed`) |
+| `SUBSTACK_NAME` | No | Label for the "Source" column in Notion (e.g. `Nate Jones`) |
 | `SUBSTACK_COOKIE` | No | Your `substack.sid` cookie for paywalled content |
 | `TRANSCRIPT_API_KEY` | No | [TranscriptAPI.com](https://transcriptapi.com) key for YouTube transcripts |
 | `YOUTUBE_CHANNEL_ID` | No | YouTube channel ID for video matching |
@@ -83,6 +85,20 @@ python main.py sync           # Full sync (RSS + covers)
 python main.py fix-covers     # Only backfill missing covers
 python main.py repair-youtube # Fix pages missing YouTube links
 ```
+
+## Multiple Substacks
+
+To track multiple newsletters in one Notion database, create a separate Railway service for each Substack — all pointing to the same `DATABASE_ID`:
+
+| Service | `SUBSTACK_RSS_URL` | `SUBSTACK_NAME` |
+|---------|-------------------|-----------------|
+| Service 1 | `https://natesnewsletter.substack.com/feed` | `Nate Jones` |
+| Service 2 | `https://other.substack.com/feed` | `Other Author` |
+| Service 3 | `https://another.substack.com/feed` | `Another Author` |
+
+Each service uses the same repo, same `NOTION_SECRET`, and same `DATABASE_ID`. The `Source` column in Notion lets you filter by newsletter.
+
+In Railway: click **New Service** > **GitHub Repo** > select this same repo > set different env vars.
 
 ## How It Works
 

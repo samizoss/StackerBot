@@ -9,6 +9,7 @@ DATABASE_ID = os.environ.get("DATABASE_ID", "")
 SUBSTACK_RSS_URL = os.environ.get("SUBSTACK_RSS_URL", "")
 
 # Optional
+SUBSTACK_NAME = os.environ.get("SUBSTACK_NAME", "")
 SUBSTACK_COOKIE = os.environ.get("SUBSTACK_COOKIE", "")
 TRANSCRIPT_API_KEY = os.environ.get("TRANSCRIPT_API_KEY", "")
 YOUTUBE_CHANNEL_ID = os.environ.get("YOUTUBE_CHANNEL_ID", "")

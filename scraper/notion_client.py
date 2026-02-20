@@ -107,6 +107,8 @@ def create_notion_page(data):
         "Type": {"select": {"name": "Newsletter"}},
         "Content Status": {"select": {"name": "Complete"}},
     }
+    if config.SUBSTACK_NAME:
+        props["Source"] = {"select": {"name": config.SUBSTACK_NAME}}
     if data.get("url"):
         props["URL"] = {"url": data["url"]}
     if data.get("yt_url"):
