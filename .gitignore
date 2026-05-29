@@ -1,5 +1,6 @@
 .env
 _env.txt
+.venv/
 __pycache__/
 *.pyc
 *.bat
